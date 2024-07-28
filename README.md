@@ -6,4 +6,5 @@ npx serverless deploy
 
 ## Slack 連携
 
-AWS Systems Manager の UDEMY_AWS_LAMBDA_SLACK_WEBHOOK_URL に 連携する Slack Webhook の URL を設定
+AWS Systems Manager の UDEMY_AWS_LAMBDA_SLACK_WEBHOOK_URL に対して、
+連携する Slack Webhook の URL を設定
