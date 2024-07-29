@@ -1,4 +1,4 @@
-service: udemy-aws-lambda
+service: lesson-aws-lambda
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -15,7 +15,7 @@ custom:
   apiGatewayThrottling:
     maxRequestsPerSecond: 10
     maxConcurrentRequests: 5
-  bucketName: sample-serverless-2024jul-s3
+  bucketName: lesson-aws-lambda-fsayg-s3
   s3Sync:
     buckets:
       - bucketName: ${self:custom.bucketName}
@@ -25,18 +25,12 @@ provider:
   name: aws
   runtime: nodejs16.x
   region: ap-northeast-1
+  httpApi:
+    cors:
+      allowedOrigins:
+        - "http://${self:custom.bucketName}.s3-website-ap-northeast-1.amazonaws.com"
 
 functions:
-  first:
-    handler: first.hello
-
-  hello:
-    handler: src/hello.handler
-    events:
-      - httpApi:
-          method: get
-          path: /hello
-
   costNotifier:
     handler: src/costNotifier.handler
     events:
@@ -79,7 +73,7 @@ resources:
     TasksDynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: sample-tasks
+        TableName: tasks
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
