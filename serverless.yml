@@ -34,8 +34,7 @@ functions:
   costNotifier:
     handler: src/costNotifier.handler
     events:
-      # 日本時間で毎朝9時
-      - schedule: cron(0 0 * * ? *)
+      - schedule: cron(0 20 * * ? *)
     environment:
       SLACK_WEBHOOK_URL: ${ssm:UDEMY_AWS_LAMBDA_SLACK_WEBHOOK_URL}
     iamRoleStatements:
